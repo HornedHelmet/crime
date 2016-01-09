@@ -1,5 +1,5 @@
 #include "inspect_item.h"
-#include <iostream>
+#include "debug.h"
 
 InspectItem::InspectItem(std::string name, std::string description, std::string texturepath, float scalex, float scaley)
 {
@@ -9,8 +9,7 @@ InspectItem::InspectItem(std::string name, std::string description, std::string 
     }
     else
     {
-        std::cout << "Warning: Failed to load texture " << 
-            texturepath << " @ inspect_item.cpp : InspectItem(std::string, std::string, std::string)" << std::endl;
+        Debug::Print(Debug::warning, "Failed to load texture", "inspect_item.cpp", "InspectItem");
     }
 
     if (m_font.loadFromFile("Resources/arial.ttf"))
@@ -23,7 +22,7 @@ InspectItem::InspectItem(std::string name, std::string description, std::string 
     }
     else
     {
-        std::cout << "Warning: Failed to load font @ inspect_item.cpp : InspectItem(std::string, std::string, std::string)" << std::endl;
+        Debug::Print(Debug::warning, "Failed to load font", "inspect_item.cpp", "InspectItem");
     }
 
     m_sprite.setScale(scalex, scaley);
@@ -36,7 +35,7 @@ InspectItem::~InspectItem()
 {
 }
 
-void InspectItem::HandleEvents(sf::Event event)
+void InspectItem::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
     if (event.type == sf::Event::TextEntered)
     {

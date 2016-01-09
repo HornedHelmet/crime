@@ -1,6 +1,7 @@
 #pragma once
 #include "state.h"
 #include "item.h"
+#include "npc.h"
 #include <memory>
 
 class StateRunning :
@@ -30,7 +31,7 @@ public:
     virtual void Draw(sf::RenderTarget& targets);
 
     // Handle events for this state.
-    virtual void HandleEvents(sf::Event event);
+    virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
 
 private:
     // Singleton, hide this.
@@ -42,6 +43,9 @@ private:
 
     // Vector containing all items (temporary)
     std::vector<std::unique_ptr<Item> > m_itemvector;
+
+    // Vector containing all actors
+    std::vector<std::unique_ptr<Actor> > m_actorvector;
 
 };
  

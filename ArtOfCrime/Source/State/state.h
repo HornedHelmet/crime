@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SFML\System\Vector2.hpp>
 namespace sf
 {
     class RenderTarget;
@@ -28,5 +28,5 @@ public:
     virtual void Draw(sf::RenderTarget& target) = 0;
 
     // Handle events for this state.
-    virtual void HandleEvents(sf::Event event) = 0;
+    virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos) = 0;
 };

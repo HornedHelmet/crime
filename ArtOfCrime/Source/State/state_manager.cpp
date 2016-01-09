@@ -23,10 +23,10 @@ void StateManager::Draw(sf::RenderTarget& target)
     m_states.back()->Draw(target);
 }
 
-void StateManager::HandleEvents(sf::Event event)
+void StateManager::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
 
-    m_states.back()->HandleEvents(event);
+    m_states.back()->HandleEvents(event, mousepos);
 }
 
 void StateManager::ChangeState(State* state)

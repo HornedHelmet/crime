@@ -1,12 +1,12 @@
 #pragma once
 
 #include "inspect_item.h"
-#include <SFML\Graphics.hpp>
+#include "interactable.h"
 #include <memory>
 #include <string>
 
-class Item : 
-    public sf::Drawable{
+class Item : public Interactable
+{
 
 public:
 
@@ -15,10 +15,10 @@ public:
     virtual ~Item(){}
 
     // TODO: Update this item.
-    void Update(float time);
+    void Update(float time) {};
 
     // Handle input events.
-    void HandleEvents(sf::Event event);
+    void HandleEvents(sf::Event event, sf::Vector2i mousepos);
 
     // Method that is called when the player clicks on the Item-
     virtual void OnClick();

@@ -17,7 +17,7 @@ public:
     virtual void Draw(sf::RenderTarget& target);
 
     // Handle events for the state at the back of the state stack.
-    virtual void HandleEvents(sf::Event event);
+    virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
 
     // Replace the current state with a new state.
     void ChangeState(State* state);

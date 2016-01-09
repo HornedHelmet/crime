@@ -1,5 +1,6 @@
 #include "item.h"
-
+#include "mouse.h"
+#include "debug.h"
 
 Item::Item(std::string name, std::string description, float posx, float posy) :
     m_name(name),
@@ -9,11 +10,10 @@ Item::Item(std::string name, std::string description, float posx, float posy) :
     m_sprite.setPosition(posx, posy);
 }
 
-void Item::HandleEvents(sf::Event event)
+void Item::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
 
-    sf::Vector2i position = sf::Mouse::getPosition();
-    if (m_sprite.getTextureRect().contains(position))
+    if (Mouse::IsMouseOver(m_sprite, mousepos))
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
@@ -25,7 +25,11 @@ void Item::HandleEvents(sf::Event event)
         }
     }  
     
-    m_detailed->HandleEvents(event);
+    if (b_inspected)
+    {
+        m_detailed->HandleEvents(event, mousepos);
+    }
+
 }
 
 void Item::OnClick()

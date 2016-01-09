@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Actor\actor.cpp" />
+    <ClCompile Include="Source\Actor\NPC\npc.cpp" />
+    <ClCompile Include="Source\Utilities\Debug\debug.cpp" />
     <ClCompile Include="Source\Item\Inspect\inspect_item.cpp" />
     <ClCompile Include="Source\Item\item.cpp" />
     <ClCompile Include="Source\Item\map.cpp" />
@@ -20,6 +23,10 @@
     <ClCompile Include="Source\State\state_running.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Actor\NPC\npc.h" />
+    <ClInclude Include="Source\Actor\actor.h" />
+    <ClInclude Include="Source\Type\interactable.h" />
+    <ClInclude Include="Source\Utilities\Debug\debug.h" />
     <ClInclude Include="Source\Item\Inspect\inspect_item.h" />
     <ClInclude Include="Source\Item\map.h" />
     <ClInclude Include="Source\Item\item.h" />
@@ -27,6 +34,7 @@
     <ClInclude Include="Source\State\state.h" />
     <ClInclude Include="Source\State\state_manager.h" />
     <ClInclude Include="Source\State\state_running.h" />
+    <ClInclude Include="Source\Utilities\Mouse\mouse.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\map.gif" />
@@ -74,7 +82,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item\Inspect;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Resource;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Algorithm;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\State;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source;F:\SFML\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Type;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Mouse;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Actor\NPC;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Actor;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Debug;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item\Inspect;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Resource;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Algorithm;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\State;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source;F:\SFML\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +101,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item\Inspect;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Resource;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Algorithm;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\State;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source;F:\SFML\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Type;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Mouse;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Actor\NPC;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Actor;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Debug;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item\Inspect;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Item;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Resource;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities\Algorithm;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\Utilities;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source\State;F:\Users\Calle\Documents\Visual Studio 2013\Projects\ArtOfCrime\ArtOfCrime\Source;F:\SFML\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

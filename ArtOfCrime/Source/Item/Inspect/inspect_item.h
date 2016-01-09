@@ -11,7 +11,7 @@ public:
     ~InspectItem();
 
     // Handle events.
-    void HandleEvents(sf::Event event);
+    void HandleEvents(sf::Event event, sf::Vector2i mousepos);
     
 private:
     InspectItem(){}

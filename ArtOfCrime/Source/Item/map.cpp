@@ -1,6 +1,8 @@
 #include "map.h"
-#include <iostream>
+#include "debug.h"
 
+// Move all this to the item class?
+ 
 Map::Map() :
     Item("Map", "A map", 20, 20)
 {
@@ -11,7 +13,7 @@ Map::Map() :
     }
     else
     {
-        std::cout << "Warning: Failed to load m_texture_detailed @ map.cpp : Map()" << std::endl;
+        Debug::Print(Debug::warning, "Failed to load m_texture", "map.cpp", "Map");
     }
 
     m_detailed = std::make_unique<InspectItem>("Map", "A map", "Resources/map.gif", 0.7f, 0.7f);
