@@ -2,28 +2,50 @@
 #include "mouse.h"
 #include "debug.h"
 
-Item::Item(std::string name, std::string description, float posx, float posy) :
+Item::Item(std::string name, std::string description, std::string texturepath, float scale, float posx, float posy) :
     m_name(name),
     m_description(description),
-    b_inspected(false)
+    b_inspected(false),
+	b_caninspect(false)
 {
-    m_sprite.setPosition(posx, posy);
+	if (m_texture.loadFromFile(texturepath))
+	{
+		m_sprite.setTexture(m_texture);
+		m_sprite.setScale(sf::Vector2f(scale, scale));
+	}
+	else
+	{
+		Debug::Print(Debug::warning, "Failed to load m_texture", "item.cpp", "Item");
+	}
+
+	m_sprite.setPosition(posx, posy);
+}
+
+Item::Item(std::string name, std::string description, std::string texturepath, float scale, float posx, float posy,
+		   std::string inspecttexturepath, float inspectscale) :
+	m_name(name),
+	m_description(description),
+	b_inspected(false),
+	b_caninspect(true)
+{
+	if (m_texture.loadFromFile(texturepath))
+	{
+		m_sprite.setTexture(m_texture);
+		m_sprite.setScale(sf::Vector2f(scale, scale));
+	}
+	else
+	{
+		Debug::Print(Debug::warning, "Failed to load m_texture", "item.cpp", "Item");
+	}
+
+	m_sprite.setPosition(posx, posy);
+	m_detailed = std::make_unique<InspectItem>(m_sprite, name, description, inspecttexturepath, inspectscale);
+
 }
 
 void Item::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
-
-    if (Mouse::IsMouseOver(m_sprite, mousepos))
-    {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            OnClick();
-        }
-        else
-        {
-            OnMouseOver();
-        }
-    }  
+	Interactable::HandleEvents(event, mousepos);
     
     if (b_inspected)
     {
@@ -32,12 +54,20 @@ void Item::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 
 }
 
+void Item::Update(float time)
+{
+	if (b_caninspect)
+	{
+		m_detailed->Update(time);
+	}
+}
+
 void Item::OnClick()
 {
     b_inspected = !b_inspected;
 }
 
-void Item::OnMouseOver()
+void Item::OnHoover()
 {
     // TODO
 }
@@ -45,7 +75,7 @@ void Item::OnMouseOver()
 void Item::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(m_sprite);
-    if (b_inspected)
+    if (b_caninspect && b_inspected)
     {
         target.draw(*m_detailed);
     }

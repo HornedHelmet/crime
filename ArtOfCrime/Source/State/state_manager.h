@@ -30,6 +30,7 @@ public:
     void PopState();
 
 private:
+	// Hide default constructor.
     StateManager() {};
 
     // State stack container.

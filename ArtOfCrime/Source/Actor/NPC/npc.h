@@ -1,22 +1,38 @@
 #pragma once
 #include "Actor.h"
+#include "location.h"
+#include <memory>
 
+// Class for creating new npc actors.
 class Npc : public Actor
 {
 public:
-    Npc();
+	// Constructor. Reference to a vector of available locations will be saved.
+    Npc(std::vector<std::shared_ptr<Location> > const& locations);
+
+	// Deconstructor
     ~Npc();
 
-    // Update this item.
+    // Update this object.
     virtual void Update(float time);
 
     // Handle user input events.
-    virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
+     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
+
 
 private:
-    virtual void OnClick();
+	// Specifies how to draw this object
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual void OnMouseOver();
+	// Specifies what the npc should do when hoovered. 
+	virtual void OnHoover();
+
+	// Specifies what the npc should do when clicked.
+	virtual void OnClick();
+
+	bool b_showlocations;
+
+	std::vector<std::shared_ptr<Location> > const& m_locationvector;
 
 };
 

@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
-#include "debug.h"
+
 int main()
 {
     // create the window
@@ -42,6 +42,6 @@ int main()
         window.display();
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 

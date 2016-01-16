@@ -2,10 +2,12 @@
 #include "state.h"
 #include "item.h"
 #include "npc.h"
+#include "location.h"
 #include <memory>
+#include "interactable.h"
 
-class StateRunning :
-    public State
+// This class is used when the game is running normally. 
+class StateRunning : public State
 {
 public:
     // Get the instance of this state. (Singleton implementation)
@@ -34,18 +36,22 @@ public:
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
 
 private:
+
+	// Singleton, delete these.
+	StateRunning(StateRunning const&) = delete;
+	void operator=(StateRunning const&) = delete;
+
     // Singleton, hide this.
     StateRunning(){};
 
-    // Singleton, delete these.
-    StateRunning(StateRunning const&) = delete;
-    void operator=(StateRunning const&) = delete;
 
     // Vector containing all items (temporary)
     std::vector<std::unique_ptr<Item> > m_itemvector;
 
     // Vector containing all actors
-    std::vector<std::unique_ptr<Actor> > m_actorvector;
+    std::vector<std::unique_ptr<Npc> > m_npcvector;
 
+	std::vector<std::shared_ptr<Location> > m_locationvector;
+		 
 };
  

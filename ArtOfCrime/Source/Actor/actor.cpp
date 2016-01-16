@@ -3,7 +3,10 @@
 
 Actor::Actor()
 {
-    m_sprite.setPosition(400, 100);
+
+	//////////////////////////////////////////
+	// Temporary
+	m_sprite.setPosition(400, 100);
 
     if (m_texture.loadFromFile("Resources/detective.gif"))
     {
@@ -14,6 +17,7 @@ Actor::Actor()
     {
         Debug::Print(Debug::warning, "Failed to load m_texture", "actor.cpp", "Actor");
     }
+	//////////////////////////////////////////
 
 }
 

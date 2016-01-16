@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -11,24 +11,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Location\Action\action_map.cpp" />
+    <ClCompile Include="Source\Location\location.cpp" />
     <ClCompile Include="Source\Actor\actor.cpp" />
     <ClCompile Include="Source\Actor\NPC\npc.cpp" />
+    <ClCompile Include="Source\Type\interactable.cpp" />
     <ClCompile Include="Source\Utilities\Debug\debug.cpp" />
     <ClCompile Include="Source\Item\Inspect\inspect_item.cpp" />
     <ClCompile Include="Source\Item\item.cpp" />
-    <ClCompile Include="Source\Item\map.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Utilities\Algorithm\numeric_algorithm.cpp" />
     <ClCompile Include="Source\State\state_manager.cpp" />
     <ClCompile Include="Source\State\state_running.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Location\Action\action.h" />
+    <ClInclude Include="Source\Location\Action\action_map.h" />
+    <ClInclude Include="Source\Location\location.h" />
     <ClInclude Include="Source\Actor\NPC\npc.h" />
     <ClInclude Include="Source\Actor\actor.h" />
     <ClInclude Include="Source\Type\interactable.h" />
     <ClInclude Include="Source\Utilities\Debug\debug.h" />
     <ClInclude Include="Source\Item\Inspect\inspect_item.h" />
-    <ClInclude Include="Source\Item\map.h" />
     <ClInclude Include="Source\Item\item.h" />
     <ClInclude Include="Source\Utilities\Algorithm\algorithm_aoc.h" />
     <ClInclude Include="Source\State\state.h" />
@@ -82,7 +86,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Location\Action;$(ProjectDir)Source\Location;$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -101,7 +105,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Location\Action;$(ProjectDir)Source\Location;$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
