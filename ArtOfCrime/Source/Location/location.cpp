@@ -10,7 +10,7 @@ Location::Location() :
 
 	m_sprite.setPosition(200, 100);
 
-	if (m_texture.loadFromFile("Resources/location.jpg"))
+	if (m_texture.loadFromFile("Resources/img/location.jpg"))
 	{
 		m_sprite.setTexture(m_texture);
 		m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));
@@ -29,7 +29,7 @@ Location::~Location()
 {
 }
 
-void Location::Update(float time)
+void Location::Update(sf::Vector2f windowsize)
 {
 	if (m_showactions)
 	{
@@ -63,5 +63,15 @@ void Location::OnClick()
 
 	m_showactions = true;
 
+}
 
+
+void Location::UnHoover()
+{
+
+}
+
+void Location::UnClick()
+{
+	m_showactions = false;
 }

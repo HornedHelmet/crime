@@ -1,6 +1,5 @@
 #include "state_manager.h"
 #include "state_running.h"
-#include "algorithm_aoc.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
@@ -12,9 +11,6 @@ int main()
 
     // initiate the state manager with the first game state
     StateManager sm(&StateRunning::GetInstance());
-
-    // start game timer
-    sf::Clock clock;
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -30,13 +26,14 @@ int main()
             else
                 sm.HandleEvents(event, sf::Mouse::getPosition(window));
         }
-
         // clear the window with black color
         window.clear(sf::Color::Black);
 
         // update and draw everything here...
-        sm.Update(clock.getElapsedTime().asSeconds());
-        sm.Draw(window);
+        sm.Update(window.getView().getSize());
+
+		// draw the state manager
+		window.draw(sm);
 
         // end the current frame
         window.display();

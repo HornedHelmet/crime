@@ -22,7 +22,7 @@ public:
     virtual ~Item(){}
 
     // Update this item.
-    void Update(float time);
+    void Update(sf::Vector2f windowsize);
 
     // Handle input events.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
@@ -47,6 +47,13 @@ private:
 
 	// Specifies what the object should do when hoovered. 
 	virtual void OnHoover();
+
+	// Specifies what the object should do when not hoovered.
+	virtual void UnHoover();
+
+	//Specifies what the object should do when something else is clicked.
+	virtual void UnClick();
+
 
     // Name of the item.
     const std::string m_name;

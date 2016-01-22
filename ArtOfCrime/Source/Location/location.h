@@ -16,7 +16,7 @@ public:
 	virtual ~Location();
 
 	// Update this object.
-	virtual void Update(float time);
+	virtual void Update(sf::Vector2f windowsize);
 
 	// Set the owner of this object. The owner is used to determine what actor is
 	// trying to interact with this location.
@@ -31,6 +31,12 @@ private:
 
 	// Specifies what the object should do when clicked.
 	virtual void OnClick();
+
+	// Specifies what the object should do when not hoovered.
+	virtual void UnHoover();
+
+	//Specifies what the object should do when something else is clicked.
+	virtual void UnClick();
 
 	// A map of available actions at this location.
 	ActionMap m_actions;

@@ -14,7 +14,7 @@ public:
     ~Npc();
 
     // Update this object.
-    virtual void Update(float time);
+    virtual void Update(sf::Vector2f windowsize);
 
     // Handle user input events.
      virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
@@ -29,6 +29,12 @@ private:
 
 	// Specifies what the npc should do when clicked.
 	virtual void OnClick();
+
+	// Specifies what the object should do when not hoovered.
+	virtual void UnHoover();
+
+	//Specifies what the object should do when something else is clicked.
+	virtual void UnClick();
 
 	bool b_showlocations;
 

@@ -18,7 +18,7 @@ public:
     void HandleEvents(sf::Event event, sf::Vector2i mousepos);
 
 	// Update this
-	void Update(float time);
+	void Update(sf::Vector2f windowsize);
     
 private:
 	// Hide default constructor
@@ -32,6 +32,12 @@ private:
 
 	// Specifies what the object should do when hoovered. 
 	virtual void OnHoover();
+
+	// Specifies what the object should do when not hoovered.
+	virtual void UnHoover();
+
+	//Specifies what the object should do when something else is clicked.
+	virtual void UnClick();
 
 
     sf::Font m_font;

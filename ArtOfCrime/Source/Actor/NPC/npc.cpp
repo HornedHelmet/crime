@@ -15,20 +15,21 @@ Npc::~Npc()
 }
 
 
-void Npc::Update(float time)
+void Npc::Update(sf::Vector2f windowsize)
 {
 	if (b_showlocations)
 	{
 		for (auto& location : m_locationvector)
 		{
 			location->SetOwner(this);
-			location->Update(time);
+			location->Update(windowsize);
 		}
 	}
 }
 
 void Npc::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
+	// Do custom events ? 
 	Actor::HandleEvents(event, mousepos);
 
 	if (b_showlocations)
@@ -49,6 +50,18 @@ void Npc::OnClick()
 void Npc::OnHoover()
 {
 
+}
+
+
+void Npc::UnHoover()
+{
+
+}
+
+
+void Npc::UnClick()
+{
+	b_showlocations = false;
 }
 
 void Npc::draw(sf::RenderTarget& target, sf::RenderStates states) const

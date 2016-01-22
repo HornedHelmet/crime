@@ -8,7 +8,7 @@ Actor::Actor()
 	// Temporary
 	m_sprite.setPosition(400, 100);
 
-    if (m_texture.loadFromFile("Resources/detective.gif"))
+    if (m_texture.loadFromFile("Resources/img/detective.gif"))
     {
         m_sprite.setTexture(m_texture);
         m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));

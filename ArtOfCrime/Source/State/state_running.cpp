@@ -1,14 +1,15 @@
 #include "state_running.h"
 #include "npc.h"
-
+#include "mission_view.h"
+#include "board_view.h"
+#include "debug.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+// Knappar måste rendreras här ute för att kunna swapa mellen views
 void StateRunning::Initialize()
 {
-    m_itemvector.push_back(std::make_unique<Item>("map", "a map", "Resources/map.gif", 0.3f, 200.f, 200.f, "Resources/map.gif", 0.4f));
-	m_npcvector.push_back(std::make_unique<Npc>(m_locationvector));
-	m_locationvector.push_back(std::make_shared<Location>());
+	m_sm_view = std::make_unique<StateManager>(&BoardView::GetInstance());
 }
 
 void StateRunning::Clean()
@@ -21,43 +22,29 @@ void StateRunning::Pause()
 
 }
 
-void StateRunning::Update(float time)
+void StateRunning::Update(sf::Vector2f windowsize)
 {
-	for (auto& npc : m_npcvector)
+	if (m_button_missionview.IsClicked())
 	{
-		npc->Update(time);
+		m_sm_view->ChangeState(&MissionView::GetInstance());
+		m_button_missionview.SetIsClicked(false);
 	}
 
-	for (auto& item : m_itemvector)
-	{
-		item->Update(time);
-	}
+	m_sm_view->Update(windowsize);
+
 }
 
-void StateRunning::Draw(sf::RenderTarget& target)
-{
-    for (auto& npc : m_npcvector)
-    {
-        target.draw(*npc.get());
-    }
 
-    for (auto& item : m_itemvector)
-    {
-        target.draw(*item.get());
-    }
+void StateRunning::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(*m_sm_view.get());
+	target.draw(m_button_missionview);
 }
 
 void StateRunning::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
-    for (auto& npc : m_npcvector)
-    {
-		npc->HandleEvents(event, mousepos);
-    }
-
-    for (auto& item : m_itemvector)
-    {
-        item->HandleEvents(event, mousepos);
-    }
+	m_button_missionview.HandleEvents(event, mousepos);
+	m_sm_view->HandleEvents(event, mousepos);
 
 }
 

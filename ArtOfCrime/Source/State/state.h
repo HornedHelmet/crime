@@ -1,14 +1,11 @@
 #pragma once
-#include <SFML\System\Vector2.hpp>
-namespace sf
-{
-    class RenderTarget;
-    class Event;
-}
+#include "runnable.h"
+#include <SFML\Graphics\Drawable.hpp>
+
 
 // Base class for all game states. 
 // All children should be singletons.
-class State
+class State : public Runnable, public sf::Drawable
 {
 
 public: 
@@ -22,10 +19,13 @@ public:
     virtual void Pause() = 0;
 
     // Update state.
-    virtual void Update(float time) = 0;
+    virtual void Update(sf::Vector2f windowsize) = 0;
+
+	// Specify how the class should be drawn (inherited from Drawable).
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 
     // Draw state.
-    virtual void Draw(sf::RenderTarget& target) = 0;
+   // virtual void Draw(sf::RenderTarget& target) = 0;
 
     // Handle events for this state.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos) = 0;

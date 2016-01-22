@@ -1,5 +1,6 @@
 #include "state_manager.h"
 #include "state.h"
+#include "debug.h"
 #include <SFML\Graphics.hpp>
 
 StateManager::StateManager(State* state)
@@ -13,14 +14,15 @@ StateManager::~StateManager()
 }
 
 
-void StateManager::Update( float time)
+void StateManager::Update(sf::Vector2f windowsize)
 {
-    m_states.back()->Update(time);
+
+    m_states.back()->Update(windowsize);
 }
 
-void StateManager::Draw(sf::RenderTarget& target)
+void StateManager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    m_states.back()->Draw(target);
+	target.draw(*m_states.back());
 }
 
 void StateManager::HandleEvents(sf::Event event, sf::Vector2i mousepos)

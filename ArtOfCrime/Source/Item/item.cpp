@@ -54,11 +54,11 @@ void Item::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 
 }
 
-void Item::Update(float time)
+void Item::Update(sf::Vector2f windowsize)
 {
 	if (b_caninspect)
 	{
-		m_detailed->Update(time);
+		m_detailed->Update(windowsize);
 	}
 }
 
@@ -70,6 +70,16 @@ void Item::OnClick()
 void Item::OnHoover()
 {
     // TODO
+}
+
+void Item::UnHoover()
+{
+
+}
+
+void Item::UnClick()
+{
+	b_inspected = false;
 }
 
 void Item::draw(sf::RenderTarget& target, sf::RenderStates states) const

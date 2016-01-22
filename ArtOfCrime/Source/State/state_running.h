@@ -1,10 +1,9 @@
 #pragma once
 #include "state.h"
-#include "item.h"
-#include "npc.h"
-#include "location.h"
+#include "state_manager.h"
+#include "button.h"
 #include <memory>
-#include "interactable.h"
+
 
 // This class is used when the game is running normally. 
 class StateRunning : public State
@@ -27,10 +26,10 @@ public:
     virtual void Pause();
 
     // Update this state.
-    virtual void Update(float time);
+    virtual void Update(sf::Vector2f windowsize);
 
-    // Draw this state.
-    virtual void Draw(sf::RenderTarget& targets);
+	// Specify how the class should be drawn (inherited from Drawable).
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     // Handle events for this state.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
@@ -44,14 +43,13 @@ private:
     // Singleton, hide this.
     StateRunning(){};
 
+	std::unique_ptr<StateManager> m_sm_view;
 
-    // Vector containing all items (temporary)
-    std::vector<std::unique_ptr<Item> > m_itemvector;
+	gui::Button m_button_missionview;
 
-    // Vector containing all actors
-    std::vector<std::unique_ptr<Npc> > m_npcvector;
+	gui::Button m_button_boardview;
 
-	std::vector<std::shared_ptr<Location> > m_locationvector;
+
 		 
 };
  

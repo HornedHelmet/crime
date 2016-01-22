@@ -14,7 +14,7 @@ public:
     virtual ~Actor();
 
 	// Update this object.
-    virtual void Update(float time) = 0;
+    virtual void Update(sf::Vector2f windowsize) = 0;
 
 
 protected:
@@ -27,4 +27,10 @@ private:
 
 	// Specify what this object should do when clicked.
 	virtual void OnClick() = 0;
+
+	// Specifies what the object should do when not hoovered.
+	virtual void UnHoover() = 0;
+
+	//Specifies what the object should do when something else is clicked.
+	virtual void UnClick() = 0;
 };

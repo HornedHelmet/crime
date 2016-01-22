@@ -1,20 +1,21 @@
 #pragma once
+#include "runnable.h"
 #include "state.h"
+#include <SFML\Graphics\Drawable.hpp>
 #include <vector>
 
 // Manager of all game states.
-class StateManager 
+class StateManager : public Runnable, public sf::Drawable
 {
 public:
     StateManager(State* state);
-
     ~StateManager();
 
     // Update state at the back of the state stack.
-    virtual void Update(float time);
+    virtual void Update(sf::Vector2f windowsize);
 
-    // Draw state at the back of the state stack.
-    virtual void Draw(sf::RenderTarget& target);
+	// Draw state at the back of the state stack.
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     // Handle events for the state at the back of the state stack.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
@@ -30,7 +31,6 @@ public:
     void PopState();
 
 private:
-	// Hide default constructor.
     StateManager() {};
 
     // State stack container.

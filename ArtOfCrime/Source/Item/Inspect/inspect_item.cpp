@@ -13,7 +13,7 @@ InspectItem::InspectItem(sf::Sprite& parent, std::string name, std::string descr
         Debug::Print(Debug::warning, "Failed to load texture", "inspect_item.cpp", "InspectItem");
     }
 
-    if (m_font.loadFromFile("Resources/arial.ttf"))
+    if (m_font.loadFromFile("Resources/font/arial.ttf"))
     {
         m_name = sf::Text(name, m_font);
         m_name.setPosition(sf::Vector2f(200.f, 0.f));
@@ -51,10 +51,28 @@ void InspectItem::HandleEvents(sf::Event event, sf::Vector2i mousepos)
     }
 }
 
-void InspectItem::Update(float time)
+void InspectItem::Update(sf::Vector2f windowsize)
 {
-	m_sprite.setPosition(m_parent.getPosition());
-	//m_inputtext.set...
+
+	// Align sprite in the center of window.
+	m_sprite.setPosition(
+		windowsize.x / 2 - m_sprite.getGlobalBounds().width / 2, 
+		windowsize.y / 2 - m_sprite.getGlobalBounds().height / 2);
+
+	// Align item name above the sprite.
+	m_name.setPosition(
+		m_sprite.getPosition().x + m_sprite.getGlobalBounds().width / 2 - m_name.getGlobalBounds().width / 2,
+		m_sprite.getPosition().y - m_name.getCharacterSize() - m_name.getGlobalBounds().height);
+
+	// Align description belove the sprite.
+	m_description.setPosition(
+		m_sprite.getPosition().x + m_sprite.getGlobalBounds().width / 2 - m_name.getGlobalBounds().width / 2,
+		m_sprite.getPosition().y + m_sprite.getGlobalBounds().height);
+
+	// Align input text below description.
+	m_inputtext.setPosition(
+		m_sprite.getPosition().x + m_sprite.getGlobalBounds().width / 2 - m_inputtext.getGlobalBounds().width / 2,
+		m_sprite.getPosition().y + m_sprite.getGlobalBounds().height + m_inputtext.getGlobalBounds().height + m_name.getGlobalBounds().height);
 }
 
 void InspectItem::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -71,6 +89,18 @@ void InspectItem::OnClick()
 }
 
 void InspectItem::OnHoover()
+{
+
+}
+
+// Specifies what the object should do when not hoovered.
+void InspectItem::UnHoover()
+{
+
+}
+
+//Specifies what the object should do when something else is clicked.
+void InspectItem::UnClick()
 {
 
 }
