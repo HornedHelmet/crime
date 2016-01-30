@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Utilities\Gui\Button\change_state_button.cpp" />
     <ClCompile Include="Source\State\View\board_view.cpp" />
     <ClCompile Include="Source\State\View\mission_view.cpp" />
     <ClCompile Include="Source\Location\Action\action_map.cpp" />
@@ -25,8 +26,10 @@
     <ClCompile Include="Source\State\state_manager.cpp" />
     <ClCompile Include="Source\State\state_running.cpp" />
     <ClCompile Include="Source\Utilities\Gui\Button\button.cpp" />
+    <ClCompile Include="Source\Utilities\Mouse\mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Utilities\Gui\Button\change_state_button.h" />
     <ClInclude Include="Source\State\View\board_view.h" />
     <ClInclude Include="Source\State\View\mission_view.h" />
     <ClInclude Include="Source\Type\runnable.h" />

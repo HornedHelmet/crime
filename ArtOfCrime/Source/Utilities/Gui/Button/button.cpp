@@ -1,15 +1,23 @@
 #include "button.h"
 #include "debug.h"
+#include "mouse.h"
+
 using namespace gui;
 
-Button::Button() :
-	m_clicked(false),
-	m_hoovered(false)
+Button::Button(std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position) :
+	Interactable(default_texture, hoover_texture, scale, position)
 {
-	m_texture.loadFromFile("Resources/img/button.png");
-	m_sprite.setTexture(m_texture);
-	m_sprite.setScale(0.2f, 0.2f);
+	/*if (m_texture.loadFromFile(texturepath))
+	{
+		m_sprite.setTexture(m_texture);
+		m_sprite.setScale(scale);
+	}
+	else
+	{
+		Debug::Print(Debug::warning, "Failed to load m_texture", "button.cpp", "Button");
+	}
 
+	m_sprite.setPosition(position);*/
 }
 
 Button::~Button()
@@ -26,24 +34,24 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(m_sprite);
 }
 
-void Button::OnClick()
+void Button::Clean()
 {
-	m_clicked = true;
-	Debug::Print("clicked");
+
 }
 
 void Button::OnHoover()
 {
-	m_hoovered = true;
+	// set outline
 }
 
 
 void Button::UnHoover()
 {
-	m_hoovered = false;
+	// remove outline
 }
 
 void Button::UnClick()
 {
-	//m_clicked = false;
+	//Debug::Print("unclick");
 }
+

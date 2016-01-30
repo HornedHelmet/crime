@@ -3,8 +3,9 @@
 
 void MissionView::Initialize()
 {
-	m_npcvector.push_back(std::make_unique<Npc>(m_locationvector));
-	m_locationvector.push_back(std::make_shared<Location>());
+	// std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position
+	m_npcvector.push_back(std::make_unique<Npc>("Name", "Description", "Resources/img/detective.gif", "Resources/img/detective_hoover.gif", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(400.f, 100.f), m_locationvector));
+	m_locationvector.push_back(std::make_shared<Location>("Name", "Description", "Resources/img/location.jpg", "Resources/img/location_hoover.jpg", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(200.f, 100.f)));
 
 	if (m_bgtexture.loadFromFile("Resources/img/background-mission.jpg"))
 	{
@@ -19,7 +20,10 @@ void MissionView::Initialize()
 
 void MissionView::Clean()
 {
-
+	for (auto& npc : m_npcvector)
+	{
+		npc->Clean();
+	}
 }
 
 

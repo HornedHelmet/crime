@@ -3,7 +3,7 @@
 
 void BoardView::Initialize()
 {
-	m_itemvector.push_back(std::make_unique<Item>("map", "a map", "Resources/img/map.gif", 0.3f, 200.f, 200.f, "Resources/img/map.gif", 0.7f));
+	m_itemvector.push_back(std::make_unique<Item>("Name", "Description", "Resources/img/map.gif", "Resources/img/map_hoover.gif", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(200.f, 200.f), "Resources/img/map.gif", sf::Vector2f(0.7f, 0.7f)));
 
 	if (m_bgtexture.loadFromFile("Resources/img/background.jpg"))
 	{
@@ -18,7 +18,10 @@ void BoardView::Initialize()
 
 void BoardView::Clean()
 {
-
+	for (auto& item : m_itemvector)
+	{
+		item->Clean();
+	}
 }
 
 

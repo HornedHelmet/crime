@@ -9,7 +9,7 @@ class InspectItem :
 {
 public:
 	// Constructor
-    InspectItem(sf::Sprite& parent, std::string name, std::string description, std::string texturepath, float scale = 1.f);
+    InspectItem(sf::Sprite& parent, std::string name, std::string description, std::string texture, sf::Vector2f scale);
 
 	// Deconstructor
     ~InspectItem();
@@ -19,10 +19,12 @@ public:
 
 	// Update this
 	void Update(sf::Vector2f windowsize);
+
+	void Clean();
     
 private:
 	// Hide default constructor
-    InspectItem(){}
+	// InspectItem() {};
 
     // Draw this object.
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -43,8 +45,6 @@ private:
     sf::Font m_font;
     sf::Text m_name;
     sf::Text m_description;
-    sf::Texture m_texture;
-    sf::Sprite m_sprite;
 	sf::Sprite const m_parent;
 
     std::string m_inputstr;

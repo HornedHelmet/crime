@@ -10,13 +10,15 @@ class Location : public Interactable
 {
 public:
 	// Constructor
-	Location();
+	Location(std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position);
 
 	// Deconstructor
 	virtual ~Location();
 
 	// Update this object.
 	virtual void Update(sf::Vector2f windowsize);
+
+	virtual void Clean(); 
 
 	// Set the owner of this object. The owner is used to determine what actor is
 	// trying to interact with this location.

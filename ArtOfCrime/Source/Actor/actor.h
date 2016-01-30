@@ -8,13 +8,15 @@ class Actor : public Interactable
 public:
 	// Constructor
 	// TODO: Expand constructor to take texture path etc
-    Actor();
+    Actor(std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position);
 
 	// Deconstructor
     virtual ~Actor();
 
 	// Update this object.
     virtual void Update(sf::Vector2f windowsize) = 0;
+
+	virtual void Clean() = 0;
 
 
 protected:

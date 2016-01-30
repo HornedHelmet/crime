@@ -8,7 +8,7 @@ class Npc : public Actor
 {
 public:
 	// Constructor. Reference to a vector of available locations will be saved.
-    Npc(std::vector<std::shared_ptr<Location> > const& locations);
+    Npc(std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position, std::vector<std::shared_ptr<Location> > const& locations);
 
 	// Deconstructor
     ~Npc();
@@ -18,6 +18,8 @@ public:
 
     // Handle user input events.
      virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
+
+	 virtual void Clean();
 
 
 private:

@@ -1,7 +1,7 @@
 #pragma once
 #include "state.h"
 #include "state_manager.h"
-#include "button.h"
+#include "change_state_button.h"
 #include <memory>
 
 
@@ -43,12 +43,9 @@ private:
     // Singleton, hide this.
     StateRunning(){};
 
-	std::unique_ptr<StateManager> m_sm_view;
+	std::shared_ptr<StateManager> m_sm_view;
 
-	gui::Button m_button_missionview;
-
-	gui::Button m_button_boardview;
-
+	std::vector<std::unique_ptr<gui::ChangeStateButton> > m_view_buttons;
 
 		 
 };

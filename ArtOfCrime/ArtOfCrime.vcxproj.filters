@@ -60,6 +60,12 @@
     <ClCompile Include="Source\State\View\board_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utilities\Mouse\mouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Gui\Button\change_state_button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\State\state.h">
@@ -114,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\State\View\board_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\Gui\Button\change_state_button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

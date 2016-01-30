@@ -12,11 +12,11 @@ class Item : public Interactable
 public:
 	
 	// Constructor for a item that is not inspectable.
-	Item(std::string name, std::string description, std::string texturepath, float scale = 1.f, float posx = 0.f, float posy = 0.f);
+	Item(std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position);
 
 	// Constructor for a item that is inspectable, i.e. the user can get a more detailed description by hoovering / clicking the item.
-    Item(std::string name, std::string description, std::string texturepath, float scale, float posx, float posy, 
-		 std::string inspecttexturepath, float inspectscale = 1.f);
+    Item(std::string name, std::string description, std::string default_texture, std::string hoover_texture, sf::Vector2f scale, sf::Vector2f position,
+		 std::string inspect_texture, sf::Vector2f inspect_scale);
 
 	// Deconstructor
     virtual ~Item(){}
@@ -26,6 +26,10 @@ public:
 
     // Handle input events.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);
+
+	// This is called when the object is not currently in use, such as the user has swapped to a different view.
+	// The object should not be destroyed but it should reset to a state where nothing is selected but user input may be saved.
+	virtual void Clean();
 
     // Get the sprite of the Item.
     sf::Sprite& GetSprite() { return m_sprite; }
@@ -37,7 +41,7 @@ protected:
 
 private:
 	// Hide default constructor
-    Item() : b_caninspect(false){};
+    // Item() : b_caninspect(false){};
     
     // Specifies how this item should be drawn.
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

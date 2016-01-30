@@ -1,35 +1,35 @@
 #include "inspect_item.h"
 #include "debug.h"
 
-InspectItem::InspectItem(sf::Sprite& parent, std::string name, std::string description, std::string texturepath, float scale) :
+InspectItem::InspectItem(sf::Sprite& parent, std::string name, std::string description, std::string texture, sf::Vector2f scale) :
+	Interactable(texture, texture, scale, sf::Vector2f(0,0)),
 	m_parent(parent)
 {
-    if (m_texture.loadFromFile(texturepath))
+    /*if (m_texture.loadFromFile(texturepath))
     {
         m_sprite.setTexture(m_texture);
+		m_sprite.setScale(scale);
     }
     else
     {
         Debug::Print(Debug::warning, "Failed to load texture", "inspect_item.cpp", "InspectItem");
     }
-
+*/
     if (m_font.loadFromFile("Resources/font/arial.ttf"))
     {
         m_name = sf::Text(name, m_font);
-        m_name.setPosition(sf::Vector2f(200.f, 0.f));
+        m_name.setPosition(sf::Vector2f(0.f, 0.f));
 
         m_description = sf::Text(description, m_font);
-        m_description.setPosition(sf::Vector2f(150.f, 400.f));
+        m_description.setPosition(sf::Vector2f(0.f, 0.f));
     }
     else
     {
         Debug::Print(Debug::warning, "Failed to load font", "inspect_item.cpp", "InspectItem");
     }
 
-    m_sprite.setScale(scale, scale);
-
     m_inputtext.setFont(m_font);
-    m_inputtext.setPosition(sf::Vector2f(200.f, 500.f));
+    m_inputtext.setPosition(sf::Vector2f(0.f, 0.f));
 }
 
 InspectItem::~InspectItem()
@@ -53,7 +53,6 @@ void InspectItem::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 
 void InspectItem::Update(sf::Vector2f windowsize)
 {
-
 	// Align sprite in the center of window.
 	m_sprite.setPosition(
 		windowsize.x / 2 - m_sprite.getGlobalBounds().width / 2, 
@@ -83,6 +82,10 @@ void InspectItem::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_inputtext);
 }
 
+void InspectItem::Clean()
+{
+}
+
 void InspectItem::OnClick()
 {
 
@@ -93,13 +96,11 @@ void InspectItem::OnHoover()
 
 }
 
-// Specifies what the object should do when not hoovered.
 void InspectItem::UnHoover()
 {
 
 }
 
-//Specifies what the object should do when something else is clicked.
 void InspectItem::UnClick()
 {
 
