@@ -11,42 +11,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Utilities\Gui\Button\change_state_button.cpp" />
-    <ClCompile Include="Source\State\View\board_view.cpp" />
-    <ClCompile Include="Source\State\View\mission_view.cpp" />
-    <ClCompile Include="Source\Location\Action\action_map.cpp" />
-    <ClCompile Include="Source\Location\location.cpp" />
-    <ClCompile Include="Source\Actor\actor.cpp" />
-    <ClCompile Include="Source\Actor\NPC\npc.cpp" />
-    <ClCompile Include="Source\Type\interactable.cpp" />
-    <ClCompile Include="Source\Utilities\Debug\debug.cpp" />
-    <ClCompile Include="Source\Item\Inspect\inspect_item.cpp" />
-    <ClCompile Include="Source\Item\item.cpp" />
+    <ClCompile Include="Source\GUI\Button\button.cpp" />
+    <ClCompile Include="Source\GUI\HUD\hud.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\State\state_manager.cpp" />
-    <ClCompile Include="Source\State\state_running.cpp" />
-    <ClCompile Include="Source\Utilities\Gui\Button\button.cpp" />
+    <ClCompile Include="Source\State\Manager\state_manager.cpp" />
+    <ClCompile Include="Source\State\States\state_running.cpp" />
+    <ClCompile Include="Source\Utilities\Debug\debug.cpp" />
     <ClCompile Include="Source\Utilities\Mouse\mouse.cpp" />
+    <ClCompile Include="Source\View\Manager\view_manager.cpp" />
+    <ClCompile Include="Source\View\Views\view_main.cpp" />
+    <ClCompile Include="Source\View\Views\view_team.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Utilities\Gui\Button\change_state_button.h" />
-    <ClInclude Include="Source\State\View\board_view.h" />
-    <ClInclude Include="Source\State\View\mission_view.h" />
-    <ClInclude Include="Source\Type\runnable.h" />
-    <ClInclude Include="Source\Location\Action\action.h" />
-    <ClInclude Include="Source\Location\Action\action_map.h" />
-    <ClInclude Include="Source\Location\location.h" />
-    <ClInclude Include="Source\Actor\NPC\npc.h" />
-    <ClInclude Include="Source\Actor\actor.h" />
-    <ClInclude Include="Source\Type\interactable.h" />
+    <ClInclude Include="Source\Base\runnable_drawable.h" />
+    <ClInclude Include="Source\GUI\Button\button.h" />
+    <ClInclude Include="Source\GUI\HUD\hud.h" />
+    <ClInclude Include="Source\Base\drawable.h" />
+    <ClInclude Include="Source\Base\runnable.h" />
+    <ClInclude Include="Source\Object\Objects\npc.h" />
+    <ClInclude Include="Source\Object\Objects\object.h" />
+    <ClInclude Include="Source\State\Manager\state_manager.h" />
+    <ClInclude Include="Source\State\States\state.h" />
+    <ClInclude Include="Source\State\States\state_running.h" />
     <ClInclude Include="Source\Utilities\Debug\debug.h" />
-    <ClInclude Include="Source\Item\Inspect\inspect_item.h" />
-    <ClInclude Include="Source\Item\item.h" />
-    <ClInclude Include="Source\State\state.h" />
-    <ClInclude Include="Source\State\state_manager.h" />
-    <ClInclude Include="Source\State\state_running.h" />
-    <ClInclude Include="Source\Utilities\Gui\Button\button.h" />
     <ClInclude Include="Source\Utilities\Mouse\mouse.h" />
+    <ClInclude Include="Source\View\Manager\view_manager.h" />
+    <ClInclude Include="Source\View\Views\view.h" />
+    <ClInclude Include="Source\View\Views\view_main.h" />
+    <ClInclude Include="Source\View\Views\view_team.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\map.gif" />
@@ -94,7 +86,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\State\View;$(ProjectDir)Source\Utilities\Gui\Button;$(ProjectDir)Source\Utilities\Gui;$(ProjectDir)Source\Location\Action;$(ProjectDir)Source\Location;$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\View\Views;$(ProjectDir)Source\View\Manager;$(ProjectDir)Source\View;$(ProjectDir)Source\State\States;$(ProjectDir)Source\State\Manager;$(ProjectDir)Source\State;$(ProjectDir)Source\Object\Objects;$(ProjectDir)Source\Object\Manager;$(ProjectDir)Source\GUI\Button;$(ProjectDir)Source\GUI\HUD;$(ProjectDir)Source\GUI;$(ProjectDir)Source\Base;$(ProjectDir)Source;D:\Libs\boost_1_60_0;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,7 +105,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\State\View;$(ProjectDir)Source\Utilities\Gui\Button;$(ProjectDir)Source\Utilities\Gui;$(ProjectDir)Source\Location\Action;$(ProjectDir)Source\Location;$(ProjectDir)Source\Type;$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Actor\NPC;$(ProjectDir)Source\Actor;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Item\Inspect;$(ProjectDir)Source\Item;$(ProjectDir)Source\Utilities\Resource;$(ProjectDir)Source\Utilities\Algorithm;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\State;$(ProjectDir)Source;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Utilities\Mouse;$(ProjectDir)Source\Utilities\Debug;$(ProjectDir)Source\Utilities;$(ProjectDir)Source\View\Views;$(ProjectDir)Source\View\Manager;$(ProjectDir)Source\View;$(ProjectDir)Source\State\States;$(ProjectDir)Source\State\Manager;$(ProjectDir)Source\State;$(ProjectDir)Source\Object\Objects;$(ProjectDir)Source\Object\Manager;$(ProjectDir)Source\GUI\Button;$(ProjectDir)Source\GUI\HUD;$(ProjectDir)Source\GUI;$(ProjectDir)Source\Base;$(ProjectDir)Source;D:\Libs\boost_1_60_0;D:\Libs\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

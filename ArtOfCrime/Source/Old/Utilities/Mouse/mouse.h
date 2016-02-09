@@ -4,6 +4,7 @@
 #include <SFML\Window\Event.hpp>
 #include <map>
 
+class Interactable;
 
 class Mouse{
 
@@ -16,12 +17,12 @@ public:
 
 	static bool IsHooveringClickable();
 	
-	//static void SetIsHooveringClickable(Interactable const* interactable, bool hoovering);
+	static void SetIsHooveringClickable(Interactable const* interactable, bool hoovering);
 
 
-	static bool b_hoovering_clickable;
 private:
-	//static std::map<Interactable const*, bool> m_hoovering_interactable;
+	static bool b_hoovering_clickable;
+	static std::map<Interactable const*, bool> m_hoovering_interactable;
 
 };
 
