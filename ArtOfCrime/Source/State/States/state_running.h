@@ -1,6 +1,6 @@
 #pragma once
 #include "state.h"
-#include "hud.h"
+#include "gui.h"
 #include "npc.h"
 #include "view_manager.h"
 #include "view_main.h"
@@ -44,13 +44,11 @@ private:
     // Singleton, hide this.
 	StateRunning();
 
-	HUD m_hud;
+	GUI m_gui;
 	ViewManager m_view_manager;
 
 	NPC m_npc1;
 	NPC m_npc2;
-	//std::vector<NPC> m_npc_vector;
-	//NPC npc1, npc2, npc3;
 		 
 };
  

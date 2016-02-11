@@ -5,10 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
-#include "view_manager.h"
-#include "view_main.h"
-#include "hud.h"
-#include "debug.h"
 
 void LoadCustomCursor(sf::Sprite& sprite, sf::Texture& default_texture, sf::Texture& hoover_texture);
 void UpdateCursor(sf::Sprite& sprite, sf::Texture const& default_texture, sf::Texture const& hoover_texture, sf::Vector2i mousepos, bool hoover);
@@ -38,8 +34,6 @@ int main()
     // run the program as long as the window is open
     while (window.isOpen())
     {
-		Mouse::b_hoovering_clickable = false;
-
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -85,6 +79,7 @@ void UpdateCursor(sf::Sprite& sprite, sf::Texture const& default_texture, sf::Te
 	}
 
 	sprite.setPosition(static_cast<sf::Vector2f>(mousepos));
+	Mouse::b_hoovering_clickable = false;
 }
 
 void LoadCustomCursor(sf::Sprite& sprite, sf::Texture& default_texture, sf::Texture& hoover_texture)

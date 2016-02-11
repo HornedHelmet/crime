@@ -1,12 +1,14 @@
 #pragma once
 #include "view.h"
-#include "npc.h"
+#include "gui.h"
 #include "view_manager.h"
-#include "button.h"
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Font.hpp>
 #include <SFML\Graphics\Text.hpp>
+#include <memory>
+
+class NPC;
 class AObject;
 
 
@@ -25,13 +27,14 @@ public:
 private:
 	ViewManager& m_view_manager;
 	NPC* m_team_member;
+	GUI* m_gui;
 
 	sf::Sprite m_background_sprite;
 	sf::Texture m_background_texture;
 	sf::Font m_font;
 	sf::Text m_name;
 
-	Button<void, ViewManager>* m_button_exit;
+	
 
 };
 

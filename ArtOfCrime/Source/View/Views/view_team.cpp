@@ -1,5 +1,6 @@
 #include "view_team.h"
 #include "object.h"
+#include "npc.h"
 #include <iostream>
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
@@ -10,6 +11,7 @@
 ViewTeam::ViewTeam(ViewManager& view_manager, AObject& team_member) :
 	m_view_manager(view_manager)
 {
+	m_gui = new GUI();
 	m_team_member = dynamic_cast<NPC*>(&team_member);
 
 	if (m_team_member == nullptr)
@@ -34,28 +36,30 @@ ViewTeam::ViewTeam(ViewManager& view_manager, AObject& team_member) :
 		m_name.setString(m_team_member->GetName());
 	}
 	
-	m_button_exit = new Button<void, ViewManager>(m_view_manager, &ViewManager::PopView, "Resources/Img/Hud/button_close.png", "Resources/Img/Hud/button_close.png", sf::Vector2f(0.05f, 0.05f), sf::Vector2f(550.f, 40.f));
+	m_gui->CreateButton<void, ViewManager>("Resources/Img/Hud/button_close.png", "Resources/Img/Hud/button_close.png", sf::Vector2f(0.05f, 0.05f), sf::Vector2f(550.f, 40.f), &ViewManager::PopView, m_view_manager);
+
 }
 
 
 ViewTeam::~ViewTeam()
 {
+	delete m_gui;
 }
 
 void ViewTeam::Update(sf::Vector2f windowsize)
 {
-	//Debug::Print(m_background_sprite.ge);
-	m_button_exit->Update(windowsize);
+	m_gui->Update(windowsize);
 }
 
 void ViewTeam::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
-	m_button_exit->HandleEvents(event, mousepos);
+	m_gui->HandleEvents(event, mousepos);
 }
 
 void ViewTeam::Draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_background_sprite);
 	target.draw(m_name);
-	target.draw(*m_button_exit);
+
+	m_gui->Draw(target, states);
 }
