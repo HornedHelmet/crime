@@ -28,8 +28,8 @@ public:
     // Update this state.
     virtual void Update(sf::Vector2f windowsize);
 
-	// Specify how the class should be drawn (inherited from Drawable).
-	virtual void Draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    // Specify how the class should be drawn (inherited from Drawable).
+    virtual void Draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     // Handle events for this state.
     virtual void HandleEvents(sf::Event event, sf::Vector2i mousepos);

@@ -42,6 +42,7 @@ ViewTeam::ViewTeam(ViewManager& view_manager, NPC& team_member) :
 
 ViewTeam::~ViewTeam()
 {
+
 }
 
 void ViewTeam::Update(sf::Vector2f windowsize)

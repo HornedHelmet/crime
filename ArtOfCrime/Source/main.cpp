@@ -38,15 +38,15 @@ int main()
         while (window.pollEvent(event))
         {
             // "close requested" event: we close the window
-			if (event.type == sf::Event::Closed)
-			{
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
-			}
-			else
-			{
-				// handle state events
-				state_manager.HandleEvents(event, sf::Mouse::getPosition(window));
-			}
+            }
+            else
+            {
+	            // handle state events
+	            state_manager.HandleEvents(event, sf::Mouse::getPosition(window));
+            }
         }
 		
 
