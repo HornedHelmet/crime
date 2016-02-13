@@ -43,11 +43,11 @@ public:
 	// Create a new button. The supplied method will be bound to the button, and when clicked the button will call the method.
 	template<class ReturnType, class Class, class... Params>
 	void CreateButton(std::string texture_path, std::string hoover_texture_path,sf::Vector2f scale, sf::Vector2f position, 
-		ReturnType(Class::*method_ref)(Params...), Class& class_ref, Params&... param_ref)
+		ReturnType(Class::*method_ref)(Params...), Class& class_ref, Params&... params)
 	{
 		m_gui_elements.push_back(
 			std::make_unique<Button<ReturnType, Class, Params...> >(
-				class_ref, method_ref, param_ref...,	              // Class, method, and params called with OnClick event
+				class_ref, method_ref, params...,					  // Class, method, and params called with OnClick event
 				texture_path, hoover_texture_path,                    // Normal and hoover texture
 				scale, position));                                    // Scale and position			
 	}

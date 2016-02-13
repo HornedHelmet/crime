@@ -42,6 +42,9 @@
     <ClCompile Include="Source\View\Views\view_team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\View\Views\view_location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Utilities\Debug\debug.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Manager\gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\View\Views\view_location.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

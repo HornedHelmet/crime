@@ -11,8 +11,8 @@ StateRunning::StateRunning()
 {
 	m_npc1.SetName("John");
 	m_npc2.SetName("Eric");
-	m_gui.CreateButton<void, ViewManager, AObject&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(0.f, 535.f), &ViewManager::ChangeView<ViewTeam, AObject&>, m_view_manager, m_npc1);
-	m_gui.CreateButton<void, ViewManager, AObject&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(65.f, 535.f), &ViewManager::ChangeView<ViewTeam, AObject&>, m_view_manager, m_npc2);
+	m_gui.CreateButton<void, ViewManager, NPC&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(0.f, 535.f), &ViewManager::ChangeView<ViewTeam, NPC&>, m_view_manager, m_npc1);
+	m_gui.CreateButton<void, ViewManager, NPC&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(65.f, 535.f), &ViewManager::ChangeView<ViewTeam, NPC&>, m_view_manager, m_npc2);
 
 }
 
@@ -33,19 +33,19 @@ void StateRunning::Pause()
 
 void StateRunning::Update(sf::Vector2f windowsize)
 {
-	m_gui.Update(windowsize);
 	m_view_manager.Update(windowsize);
+	m_gui.Update(windowsize);
 }
 
 void StateRunning::Draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	m_gui.Draw(target, states);
 	m_view_manager.Draw(target, states);
+	m_gui.Draw(target, states);
 }
 
 void StateRunning::HandleEvents(sf::Event event, sf::Vector2i mousepos)
 {
-	m_gui.HandleEvents(event, mousepos);
 	m_view_manager.HandleEvents(event, mousepos);
+	m_gui.HandleEvents(event, mousepos);
 }
 

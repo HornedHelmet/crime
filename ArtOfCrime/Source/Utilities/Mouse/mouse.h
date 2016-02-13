@@ -4,24 +4,20 @@
 #include <SFML\Window\Event.hpp>
 #include <map>
 
-
+// All things mouse related.
 class Mouse{
 
 public:
 	// Checks if the mouse is hoovering the given sprite.
 	static bool IsMouseOver(const sf::Sprite& sprite, const sf::Vector2i mousepos);
 
-	// Checks if the given mouse button is pressed. ( The SFML function is bugged).
+	// Checks if the given mouse button is pressed. ( The SFML lib function is bugged, use this instead ).
 	static bool IsMouseButtonPressed(sf::Event event, sf::Mouse::Button button);
 
-	static bool IsHooveringClickable();
-	
-	//static void SetIsHooveringClickable(Interactable const* interactable, bool hoovering);
-
-
+	// Indicates if the cursor is hoovering a clickable object.
 	static bool b_hoovering_clickable;
+
 private:
-	//static std::map<Interactable const*, bool> m_hoovering_interactable;
 
 };
 

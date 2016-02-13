@@ -7,10 +7,11 @@ namespace aoc
 	class Drawable : public sf::Drawable
 	{
 	public:
-		// Draw this object
+		// Draw this object.
 		virtual void Draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 
 	private:
+		// The SFML draw method.
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const { Draw(target, states); };
 	};
 }

@@ -1,8 +1,7 @@
 #pragma once
-#include "runnable.h"
-#include "drawable.h"
+#include "runnable_drawable.h"
 
-class View : public aoc::Runnable, public aoc::Drawable
+class View : public aoc::RunnableDrawable
 {
 
 public:
