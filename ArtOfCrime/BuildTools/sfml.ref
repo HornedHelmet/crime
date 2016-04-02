@@ -1,0 +1,2 @@
+This file has custom build steps attached to it.
+It copies sfml dlls to output dir.

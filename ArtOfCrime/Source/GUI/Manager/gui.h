@@ -41,7 +41,7 @@ public:
 	}
 
 	// Create a new button. The supplied method will be bound to the button, and when clicked the button will call the method.
-	template<class ReturnType, class Class, class... Params>
+	template<class ReturnType, class Class, typename... Params>
 	void CreateButton(std::string texture_path, std::string hoover_texture_path,sf::Vector2f scale, sf::Vector2f position, 
 		ReturnType(Class::*method_ref)(Params...), Class& class_ref, Params&... params)
 	{

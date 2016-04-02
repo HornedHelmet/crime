@@ -3,7 +3,7 @@
 #include "gui.h"
 #include "npc.h"
 #include "view_manager.h"
-#include "view_main.h"
+#include "object_manager.h"
 
 // This class is used when the game is running normally. 
 class StateRunning : public State
@@ -46,9 +46,10 @@ private:
 
 	GUI m_gui;
 	ViewManager m_view_manager;
+    ObjectManager m_object_manager;
 
-	NPC m_npc1;
-	NPC m_npc2;
+	//NPC m_npc1;
+	//NPC m_npc2;
 		 
 };
  

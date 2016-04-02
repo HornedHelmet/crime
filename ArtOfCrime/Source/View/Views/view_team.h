@@ -3,6 +3,7 @@
 #include "gui.h"
 #include "view_manager.h"
 #include "npc.h"
+#include "location.h"
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Font.hpp>
@@ -16,7 +17,7 @@ class AObject;
 class ViewTeam : public View
 {
 public:
-	ViewTeam(ViewManager& view_manager, NPC& team_member);
+	ViewTeam(ViewManager& view_manager, NPC& team_member, std::vector<Location>& locations);
 	~ViewTeam();
 
 	void Update(sf::Vector2f windowsize);
@@ -27,7 +28,7 @@ public:
 
 private:
 	ViewManager& m_view_manager;
-	NPC m_team_member;
+	NPC& m_team_member;
 	GUI m_gui;
 
 	sf::Sprite m_background_sprite;

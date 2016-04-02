@@ -9,11 +9,18 @@
 
 StateRunning::StateRunning()
 {
-	m_npc1.SetName("John");
-	m_npc2.SetName("Eric");
-	m_gui.CreateButton<void, ViewManager, NPC&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(0.f, 535.f), &ViewManager::ChangeView<ViewTeam, NPC&>, m_view_manager, m_npc1);
-	m_gui.CreateButton<void, ViewManager, NPC&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png", sf::Vector2f(0.3f, 0.3f), sf::Vector2f(65.f, 535.f), &ViewManager::ChangeView<ViewTeam, NPC&>, m_view_manager, m_npc2);
+    m_object_manager.AddAlly("John", "A cool guy", TextureData("Resources/Img/Hud/npc_john.png", sf::Vector2f(0.5f, 0.5f)));
+    m_object_manager.AddAlly("Eric", "A cool spy", TextureData("Resources/Img/Hud/npc_john.png", sf::Vector2f(0.5f, 0.5f)));
 
+    m_object_manager.AddLocation("The plaza");
+    m_object_manager.AddLocation("The bank");
+
+    for (unsigned int i = 0; i < m_object_manager.GetAllyCount(); i++)
+    {
+        m_gui.CreateButton<void, ViewManager, NPC&, std::vector<Location>&>("Resources/Img/Hud/npc.png", "Resources/Img/Hud/npc_hoover.png",
+            sf::Vector2f(0.3f, 0.3f), sf::Vector2f(65.f*i, 535.f), &ViewManager::ChangeView<ViewTeam, NPC&, std::vector<Location>&>, m_view_manager, m_object_manager.GetAllyAt(i), m_object_manager.GetLocations());
+    }
+	
 }
 
 void StateRunning::Initialize()

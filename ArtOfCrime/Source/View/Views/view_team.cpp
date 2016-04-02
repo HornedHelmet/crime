@@ -1,4 +1,5 @@
 #include "view_team.h"
+#include "view_location.h"
 #include "object.h"
 #include <iostream>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -7,7 +8,7 @@
 #include "debug.h"
 
 
-ViewTeam::ViewTeam(ViewManager& view_manager, NPC& team_member) :
+ViewTeam::ViewTeam(ViewManager& view_manager, NPC& team_member, std::vector<Location>& locations) :
 	m_view_manager(view_manager),
 	m_team_member(team_member)
 {
@@ -27,15 +28,25 @@ ViewTeam::ViewTeam(ViewManager& view_manager, NPC& team_member) :
 
 	if (m_font.loadFromFile("Resources/Font/arial.ttf"))
 	{
-		m_name.setFont(m_font);
-		m_name.setCharacterSize(30);
-		m_name.setStyle(sf::Text::Bold);
-		m_name.setPosition(300, 100);
-		m_name.setColor(sf::Color::Black);
-		m_name.setString(m_team_member.GetName());
+        m_team_member.GetName().setFont(m_font);
+        m_team_member.GetName().setCharacterSize(30);
+        m_team_member.GetName().setStyle(sf::Text::Bold);
+        m_team_member.GetName().setPosition(445, 100);
+        m_team_member.GetName().setColor(sf::Color::Black);
+
+        m_team_member.GetDescription().setFont(m_font);
+        m_team_member.GetDescription().setCharacterSize(15);
+        m_team_member.GetDescription().setPosition(300, 300);
+        m_team_member.GetDescription().setColor(sf::Color::Black);
 	}
+
+    m_team_member.GetPhoto().setPosition(260, 75);
 	
-	m_gui.CreateButton<void, ViewManager>("Resources/Img/Hud/button_close.png", "Resources/Img/Hud/button_close.png", sf::Vector2f(0.05f, 0.05f), sf::Vector2f(550.f, 40.f), &ViewManager::PopView, m_view_manager);
+	m_gui.CreateButton<void, ViewManager>("Resources/Img/Hud/button_close.png", "Resources/Img/Hud/button_close.png", 
+        sf::Vector2f(0.05f, 0.05f), sf::Vector2f(550.f, 40.f), &ViewManager::PopView, m_view_manager);
+
+    m_gui.CreateButton<void, ViewManager, NPC&, std::vector<Location>&>("Resources/Img/Hud/mission_button.gif", "Resources/Img/Hud/mission_button.gif", 
+        sf::Vector2f(0.7f, 0.7f), sf::Vector2f(350.f, 500.f), &ViewManager::ChangeView<ViewLocation, NPC&, std::vector<Location>&>, m_view_manager, team_member, locations);
 
 }
 
@@ -59,7 +70,9 @@ void ViewTeam::Draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_background_sprite);
 	target.draw(m_ally_sprite);
-	target.draw(m_name);
+    target.draw(m_team_member.GetPhoto());
+	target.draw(m_team_member.GetName());
+    target.draw(m_team_member.GetDescription());
 
 	m_gui.Draw(target, states);
 }
