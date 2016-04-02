@@ -50,16 +50,16 @@
   <ItemGroup>
     <CustomBuild Include="BuildTools\sfml.ref">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">COPY "$(SolutionDir)References\SFML-2.3.2\bin\*.dll" "$(TargetDir)" &gt; NUL
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">COPY "$(SolutionDir)References\SFML-2.3.2\dll\*.dll" "$(TargetDir)" &gt; NUL
 </Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename) binaries to output dir.</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(TargetDir)%(Filename).dll;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)References\SFML-2.3.2\bin\*.dll;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">COPY "$(SolutionDir)References\SFML-2.3.2\bin\*.dll" "$(TargetDir)" &gt; NUL
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)References\SFML-2.3.2\dll\*.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">COPY "$(SolutionDir)References\SFML-2.3.2\dll\*.dll" "$(TargetDir)" &gt; NUL
 </Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename) binaries to output dir.</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(TargetDir)%(Filename).dll;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)References\SFML-2.3.2\bin\*.dll;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)References\SFML-2.3.2\dll\*.dll;%(AdditionalInputs)</AdditionalInputs>
     </CustomBuild>
   </ItemGroup>
   <PropertyGroup Label="Globals">
